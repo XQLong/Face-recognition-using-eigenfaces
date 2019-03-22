@@ -44,22 +44,22 @@ class EigenFace(object):
             self.vector_matrix[:,idx] = img.flatten()
 
         # 读取测试数据集图片
-        test_image_names = []
-        for root, dirnames, filenames in os.walk(test_image_path):
-            for filename in fnmatch.filter(filenames, suffix):
-                test_image_names.append(os.path.join(root, filename))
-        # image_names = [image for image in os.listdir(image_path) if not image.startswith('.')]
-        for idx, image_names in enumerate(test_image_names):
-            img = cv2.imread(image_names, cv2.IMREAD_GRAYSCALE).astype(np.float64)
-            if idx == 0:
-                # 初始化一个M行，S(所有样本图片的个数)列的矩阵
-                self.test_vector_matrix = np.zeros((self.imgShape[0] * self.imgShape[1], len(test_image_names)), dtype=np.float64)
-            # img = cv2.pyrDown(img)
-            self.test_imsge_dictionary.append((image_names, img, self.getClassFromName(image_names)))
-            # 将图像矩阵展开为一列
-            self.test_vector_matrix[:, idx] = img.flatten()
+        # test_image_names = []
+        # for root, dirnames, filenames in os.walk(test_image_path):
+        #     for filename in fnmatch.filter(filenames, suffix):
+        #         test_image_names.append(os.path.join(root, filename))
+        # # image_names = [image for image in os.listdir(image_path) if not image.startswith('.')]
+        # for idx, image_names in enumerate(test_image_names):
+        #     img = cv2.imread(image_names, cv2.IMREAD_GRAYSCALE).astype(np.float64)
+        #     if idx == 0:
+        #         # 初始化一个M行，S(所有样本图片的个数)列的矩阵
+        #         self.test_vector_matrix = np.zeros((self.imgShape[0] * self.imgShape[1], len(test_image_names)), dtype=np.float64)
+        #     # img = cv2.pyrDown(img)
+        #     self.test_imsge_dictionary.append((image_names, img, self.getClassFromName(image_names)))
+        #     # 将图像矩阵展开为一列
+        #     self.test_vector_matrix[:, idx] = img.flatten()
 
-        #print(self.test_imsge_dictionary)
+        #读取所有数据，将数据集按比例分为训练集和测试集
 
 
         subjects = set()
